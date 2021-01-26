@@ -42,7 +42,7 @@ set ignorecase
 
 " special letter display
 set showbreak=↪\
-set listchars=eol=↩
+set listchars=eol:↩,trail:↩
 
 """""""""""""""""""""""
 " KEY MAPPING SECTION "
