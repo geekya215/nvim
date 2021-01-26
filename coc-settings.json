@@ -1,0 +1,45 @@
+{
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "suggest.completionItemKindLabels": {
+    "keyword": "",
+    "variable": "",
+    "value": "",
+    "operator": "Ψ",
+    "function": "⨕",
+    "reference": "渚",
+    "constant": "",
+    "method": "",
+    "struct": "פּ",
+    "class": "",
+    "interface": "",
+    "text": "♣",
+    "enum": "",
+    "enumMember": "",
+    "module": "",
+    "color": "",
+    "property": "",
+    "field": "",
+    "unit": "",
+    "event": "鬒",
+    "file": "",
+    "folder": "",
+    "snippet": "",
+    "typeParameter": "",
+    "default": ""
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "$HOME/.config/nvim/UltiSnips"
+  ],
+  "eslint.format.enable": true,
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.jumpCommand": "tabe",
+  "explorer.icon.enableNerdfont": true
+}
