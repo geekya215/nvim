@@ -10,6 +10,18 @@ snippet imm "import as module" b
 import { $2 } from '$1';
 endsnippet
 
+snippet ed "export as default" b
+export default $1;
+endsnippet
+
+snippet em "normal export" b
+export { $1 };
+endsnippet
+
+snippet dv "destruct assignment value" b
+const { $2 } = $1;
+endsnippet
+
 snippet fc "create functional component" b
 const $1 = () => {
 
