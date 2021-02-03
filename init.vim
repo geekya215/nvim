@@ -181,7 +181,7 @@ nnoremap <silent> <F12> :FloatermToggle<CR>
 tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
 
 " Coc
-let let g:coc_global_extensions = [
+let g:coc_global_extensions = [
   \'coc-tsserver',
   \'coc-json',
   \'coc-html',
@@ -190,7 +190,8 @@ let let g:coc_global_extensions = [
   \'coc-eslint',
   \'coc-snippets',
   \'coc-explorer',
-  \'coc-pairs']
+  \'coc-pairs'
+  \]
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
