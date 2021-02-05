@@ -24,7 +24,7 @@ set cursorline
 set autoindent
 set scrolloff=4
 
-" indent witdh and type
+" indent width and type
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -82,7 +82,7 @@ noremap J 5j
 noremap K 5k
 
 " quit highlight search
-nore <leader><CR> :nohlsearch<CR>
+noremap <silent> <leader><CR> :nohlsearch<CR>
 
 " copy to system clipboard
 noremap Y "+y
