@@ -115,17 +115,21 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " color scheme
-Plug 'glepnir/oceanic-material'
+Plug 'glepnir/zephyr-nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+
+" status bar
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 
 " ui
 Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
-Plug 'glepnir/spaceline.vim'
-Plug 'ryanoasis/vim-devicons'
+
 Plug 'Yggdroot/indentLine'
 Plug 'mg979/vim-xtabline'
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
+Plug 'ryanoasis/vim-devicons'
 
 " edit
 Plug 'tpope/vim-surround'
@@ -140,8 +144,10 @@ call plug#end()
 """""""""""""""
 
 " color scheme
-let g:oceanic_material_background = 'darker'
-colorscheme oceanic_material
+colorscheme zephyr
+
+" status bar
+lua require("eviline")
 
 " dashboard
 let g:dashboard_default_executive = 'clap'
@@ -154,10 +160,6 @@ nnoremap <silent> <leader>tc :DashboardChangeColorscheme<CR>
 nnoremap <silent> <leader>fa :DashboardFindWord<CR>
 nnoremap <silent> <leader>fb :DashboardJumpMark<CR>
 nnoremap <silent> <leader>cn :DashboardNewFile<CR>
-
-" spaceline
-let g:spaceline_seperate_style = 'none'
-let g:spaceline_colorscheme = 'space'
 
 " indentLine
 let g:indentLine_fileTypeExclude = ['coc-explorer', 'dashboard']
