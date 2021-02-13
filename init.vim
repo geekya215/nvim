@@ -146,7 +146,7 @@ call plug#end()
 """""""""""""""
 
 " color scheme
-colorscheme zephyr
+lua require('zephyr').get_zephyr_color()
 
 " status bar
 lua require("eviline")

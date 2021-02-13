@@ -139,7 +139,7 @@ gls.right[2] = {
 
 gls.right[3] = {
   GitIcon = {
-    provider = function() return '  ' end,
+    provider = function() return '   ' end,
     condition = require('galaxyline.provider_vcs').check_git_workspace,
     separator = ' ',
     separator_highlight = {'NONE',colors.bg},
