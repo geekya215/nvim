@@ -5,11 +5,6 @@
 " |_| \_|\___|\___/ \_/ |_|_| |_| |_|  \____\___/|_| |_|_| |_|\__, |
 "                                                             |___/
 
-" enable syntax highlight
-if has("syntax")
-  syntax on
-endif
-
 " jump to the last position when reopen file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
