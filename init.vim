@@ -116,7 +116,9 @@ Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 
 " ui
 Plug 'glepnir/dashboard-nvim'
-Plug 'liuchengxu/vim-clap'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " indent
 Plug 'glepnir/indent-guides.nvim'
@@ -187,7 +189,7 @@ let g:nvim_tree_bindings = {
     \ }
 
 " dashboard
-let g:dashboard_default_executive = 'clap'
+let g:dashboard_default_executive = 'telescope'
 nmap <leader>ss :<C-u>SessionSave<CR>
 nmap <leader>sl :<C-u>SessionLoad<CR>
 nnoremap <silent> <leader>fh :DashboardFindHistory<CR>
@@ -196,6 +198,22 @@ nnoremap <silent> <leader>tc :DashboardChangeColorscheme<CR>
 nnoremap <silent> <leader>fa :DashboardFindWord<CR>
 nnoremap <silent> <leader>fb :DashboardJumpMark<CR>
 nnoremap <silent> <leader>cn :DashboardNewFile<CR>
+
+" telescope
+lua <<EOF
+  local actions = require('telescope.actions')
+  require('telescope').setup {
+    defaults = {
+      file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+      mappings = {
+        i = {
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
+        }
+      }
+    },
+  }
+EOF
 
 " rainbow
 let g:rainbow_active = 1
