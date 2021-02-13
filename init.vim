@@ -151,7 +151,6 @@ lua require("eviline")
 
 " dashboard
 let g:dashboard_default_executive = 'clap'
-let g:dashboard_custom_header = 'commicgirl9'
 nmap <leader>ss :<C-u>SessionSave<CR>
 nmap <leader>sl :<C-u>SessionLoad<CR>
 nnoremap <silent> <leader>fh :DashboardFindHistory<CR>
