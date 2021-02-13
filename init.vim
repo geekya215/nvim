@@ -125,7 +125,9 @@ Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
 
-Plug 'Yggdroot/indentLine'
+" indent
+Plug 'glepnir/indent-guides.nvim'
+
 Plug 'mg979/vim-xtabline'
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
@@ -148,6 +150,9 @@ colorscheme zephyr
 
 " status bar
 lua require("eviline")
+
+" indent 
+lua require('indent_guides')
 
 " dashboard
 let g:dashboard_default_executive = 'clap'
