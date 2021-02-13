@@ -128,10 +128,12 @@ Plug 'liuchengxu/vim-clap'
 " indent
 Plug 'glepnir/indent-guides.nvim'
 
-Plug 'mg979/vim-xtabline'
+Plug 'akinsho/nvim-bufferline.lua'
+
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
-Plug 'ryanoasis/vim-devicons'
+
+Plug 'kyazdani42/nvim-web-devicons'
 
 " edit
 Plug 'tpope/vim-surround'
@@ -152,7 +154,28 @@ colorscheme zephyr
 lua require("eviline")
 
 " indent 
-lua require('indent_guides')
+lua << EOF
+  require'indent_guides'.setup {
+    exclude_filetypes = {'help','dashboard','NvimTree','which_key'};
+  }
+EOF
+
+" bufferline
+lua << EOF
+  require'bufferline'.setup {
+    options = {
+      buffer_close_icon = '',
+      always_show_bufferline = false,
+    }
+  }
+EOF
+
+nnoremap <silent>]b :BufferLineCycleNext<CR>
+nnoremap <silent>[b :BufferLineCyclePrev<CR>
+nnoremap <silent>]m :BufferLineMoveNext<CR>
+nnoremap <silent>[m :BufferLineMovePrev<CR>
+nnoremap <silent>gb :BufferLinePick<CR>
+nnoremap <silent> <space>q :bd<CR>
 
 " dashboard
 let g:dashboard_default_executive = 'clap'
@@ -164,9 +187,6 @@ nnoremap <silent> <leader>tc :DashboardChangeColorscheme<CR>
 nnoremap <silent> <leader>fa :DashboardFindWord<CR>
 nnoremap <silent> <leader>fb :DashboardJumpMark<CR>
 nnoremap <silent> <leader>cn :DashboardNewFile<CR>
-
-" indentLine
-let g:indentLine_fileTypeExclude = ['coc-explorer', 'dashboard']
 
 " rainbow
 let g:rainbow_active = 1
