@@ -66,13 +66,6 @@ noremap <leader>l <C-w>l
 map <leader><left> :vertical resize-5<CR>
 map <leader><right> :vertical resize+5<CR>
 
-" tab
-noremap <leader>t :tabe<CR>
-noremap <leader>j :-tabnext<CR>
-noremap <leader>k :+tabnext<CR>
-noremap <leader>mj :-tabmove<CR>
-noremap <leader>mk :+tabmove<CR>
-
 " simplify indent
 noremap > >>
 noremap < <<
@@ -173,11 +166,11 @@ lua << EOF
   }
 EOF
 
-nnoremap <silent>]b :BufferLineCycleNext<CR>
-nnoremap <silent>[b :BufferLineCyclePrev<CR>
+nnoremap <silent><leader>k :BufferLineCycleNext<CR>
+nnoremap <silent><leader>j :BufferLineCyclePrev<CR>
 nnoremap <silent>]m :BufferLineMoveNext<CR>
 nnoremap <silent>[m :BufferLineMovePrev<CR>
-nnoremap <silent>gb :BufferLinePick<CR>
+nnoremap <silent><leader>p :BufferLinePick<CR>
 nnoremap <silent>q :bn<bar>bd!#<cr>
 
 " nvim tree 
@@ -187,6 +180,7 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_follow = 1
 let g:nvim_tree_tab_open = 1
+let g:nvim_tree_auto_close = 1
 let g:nvim_tree_bindings = {
     \ 'edit':            ['<CR>', 'o', 'l'],
     \ 'close_node':      ['<S-CR>', '<BS>', 'h'],
