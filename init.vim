@@ -135,6 +135,9 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'kyazdani42/nvim-web-devicons'
 
+" file explorer
+Plug 'kyazdani42/nvim-tree.lua'
+
 " edit
 Plug 'tpope/vim-surround'
 
@@ -175,7 +178,19 @@ nnoremap <silent>[b :BufferLineCyclePrev<CR>
 nnoremap <silent>]m :BufferLineMoveNext<CR>
 nnoremap <silent>[m :BufferLineMovePrev<CR>
 nnoremap <silent>gb :BufferLinePick<CR>
-nnoremap <silent> <space>q :bd<CR>
+nnoremap <silent>q :bn<bar>bd!#<cr>
+
+" nvim tree 
+nmap <silent> <leader>e :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+let g:nvim_tree_indent_markers = 1
+let g:nvim_tree_follow = 1
+let g:nvim_tree_tab_open = 1
+let g:nvim_tree_bindings = {
+    \ 'edit':            ['<CR>', 'o', 'l'],
+    \ 'close_node':      ['<S-CR>', '<BS>', 'h'],
+    \ }
 
 " dashboard
 let g:dashboard_default_executive = 'clap'
@@ -215,7 +230,6 @@ let g:coc_global_extensions = [
   \'coc-prettier',
   \'coc-eslint',
   \'coc-snippets',
-  \'coc-explorer',
   \'coc-pairs'
   \]
 
@@ -268,7 +282,3 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nmap <leader>f :Prettier<CR>
-
-" Open explorer
-nmap <silent> <leader>e :CocCommand explorer<CR>
-
