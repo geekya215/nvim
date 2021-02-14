@@ -142,6 +142,14 @@ call plug#end()
 
 " color scheme
 lua require('zephyr').get_zephyr_color()
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {'javascript'},
+  highlight = {
+    enable = true,
+  },
+}
+EOF
 
 " status bar
 lua require("eviline")
