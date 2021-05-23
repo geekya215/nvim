@@ -1,0 +1,2 @@
+-- colorizer
+require 'colorizer'.setup()

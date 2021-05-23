@@ -20,13 +20,15 @@ return require('packer').startup(function()
 
   use {'glepnir/zephyr-nvim', requires = 'nvim-treesitter/nvim-treesitter'}
 
-  use {'glepnir/galaxyline.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+  use {'glepnir/galaxyline.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
   use 'glepnir/indent-guides.nvim'
 
   use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
   use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
+
+  use {'norcalli/nvim-colorizer.lua', ft = {'html', 'css', 'sass', 'typescript', 'typescriptreact'}}
 
   use 'tpope/vim-surround'
 end)
