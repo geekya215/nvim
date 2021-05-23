@@ -30,5 +30,7 @@ return require('packer').startup(function()
 
   use {'norcalli/nvim-colorizer.lua', ft = {'html', 'css', 'sass', 'typescript', 'typescriptreact'}}
 
+  use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
+
   use 'tpope/vim-surround'
 end)
