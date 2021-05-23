@@ -15,8 +15,6 @@ return require('packer').startup(function()
   use 'hrsh7th/nvim-compe'
   use 'hrsh7th/vim-vsnip'
 
-  use 'glepnir/lspsaga.nvim'
-
   use 'glepnir/dashboard-nvim'
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
 
