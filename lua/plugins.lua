@@ -16,7 +16,7 @@ return require('packer').startup(function()
   use 'hrsh7th/vim-vsnip'
 
   use 'glepnir/dashboard-nvim'
-  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
+  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-fzy-native.nvim'}}}
 
   use {'glepnir/zephyr-nvim', requires = 'nvim-treesitter/nvim-treesitter'}
 

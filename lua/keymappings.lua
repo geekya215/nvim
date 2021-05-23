@@ -34,6 +34,9 @@ vim.g.nvim_tree_bindings = {
   ["h"] = tree_cb("close_node"),
 }
 
+-- telescope
+vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", {noremap = true})
+
 -- bufferline
 vim.api.nvim_set_keymap('n', '<leader>j', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>k', ':BufferLineCycleNext<CR>', {noremap = true, silent = true})
