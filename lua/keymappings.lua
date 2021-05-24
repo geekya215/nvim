@@ -5,7 +5,6 @@ vim.api.nvim_set_keymap('', ';', ':', {noremap = true})
 vim.api.nvim_set_keymap('', 'S', ':w<CR>', {noremap = true})
 vim.api.nvim_set_keymap('', 'Q', ':q<CR>', {noremap = true})
 vim.api.nvim_set_keymap('', '<C-q>', ':qa<CR>', {noremap = true})
-vim.api.nvim_set_keymap('', 'R', ':source ~/.config/nvim/init.lua<CR>', {noremap = true})
 
 -- indent
 vim.api.nvim_set_keymap('', '<', '<<', {noremap = true})
