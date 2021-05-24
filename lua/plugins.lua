@@ -34,5 +34,7 @@ return require('packer').startup(function()
 
   use 'tpope/vim-surround'
 
-  use "terrortylor/nvim-comment"
+  use 'terrortylor/nvim-comment'
+
+  use 'kdheepak/lazygit.nvim'
 end)
