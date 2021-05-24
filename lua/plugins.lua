@@ -33,4 +33,6 @@ return require('packer').startup(function()
   use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
 
   use 'tpope/vim-surround'
+
+  use "terrortylor/nvim-comment"
 end)

@@ -1,6 +1,9 @@
 -- colorizer
 require('colorizer').setup()
 
+-- comment
+require('nvim_comment').setup()
+
 -- telescope
 require('telescope').load_extension('fzy_native')
 
