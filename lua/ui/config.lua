@@ -72,6 +72,17 @@ require("ui.eviline")
 
 -- nvim tree
 vim.g.nvim_tree_indent_markers = 1
+vim.g.nvim_tree_icons = {
+  default =  '',
+  symlink =  '',
+  git = {
+   unstaged = "✚",
+   staged =  "✚",
+   unmerged =  "≠",
+   renamed =  "≫",
+   untracked = "★",
+  },
+}
 
 -- indent line
 require("indent_guides").setup({
