@@ -22,3 +22,8 @@ vim.o.ignorecase = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.cursorline = true
+
+-- special letter display
+vim.o.showbreak="↪"
+vim.o.listchars="eol:↩,trail:↩"
+
