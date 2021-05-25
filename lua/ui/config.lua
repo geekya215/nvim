@@ -87,11 +87,11 @@ vim.g.nvim_tree_icons = {
 -- indent line
 require("indent_guides").setup({
   even_colors = {
-    fg = '#2E323A',
+    fg = '#73828a',
     bg = '#34383F',
   };
   odd_colors = {
-    fg = '#34383F',
+    fg = '#73828A',
     bg = '#2E323A',
   };
 })
