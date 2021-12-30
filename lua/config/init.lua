@@ -1,0 +1,7 @@
+require('config.bufferline')
+require('config.gitsigns')
+require('config.indent-blankline')
+require('config.kanagawa')
+require('config.lualine')
+require('config.nvim-tree')
+require('config.treesitter')

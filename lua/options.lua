@@ -1,9 +1,10 @@
 -- general
 vim.o.termguicolors = true
 vim.o.ttyfast = true
-vim.o.encoding = "utf-8"
+vim.o.encoding = 'utf-8'
 vim.o.wrap = false
 vim.o.scrolloff = 4
+vim.o.signcolumn = 'yes'
 
 -- indent
 vim.o.autoindent = true
@@ -19,11 +20,14 @@ vim.o.smartcase = true
 vim.o.ignorecase = true
 
 -- line number
-vim.wo.number = true
-vim.wo.relativenumber = true
-vim.wo.cursorline = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.cursorline = true
 
--- special letter display
-vim.o.showbreak="↪"
-vim.o.listchars="eol:↩,trail:↩"
+-- special chars display
+vim.o.showbreak='↪'
+-- vim.o.list = true
+-- vim.o.listchars="eol:↩,trail:↩"
 
+-- others
+vim.o.showmode = false
