@@ -87,9 +87,9 @@ cmp.setup({
   },
 
   experimental = {
-		native_menu = false,
-		ghost_text = true,
-	},
+    native_menu = false,
+    ghost_text = true,
+  },
 
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
