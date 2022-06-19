@@ -1,6 +1,0 @@
-require('options')
-require('plugins')
-require('config')
-require('lsp')
-require('keymappings')
-vim.cmd('colorscheme kanagawa')
