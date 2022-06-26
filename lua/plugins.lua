@@ -55,6 +55,19 @@ return require("packer").startup(function(use)
   -- use "nvim-treesitter/nvim-treesitter-refactor"
 
   use {
+    "nvim-telescope/telescope.nvim",
+    requires = "nvim-lua/plenary.nvim"
+  }
+
+  use {
+    "SmiteshP/nvim-gps",
+    requires = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("config.nvim-gps")
+    end
+  }
+
+  use {
     "kyazdani42/nvim-tree.lua",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
