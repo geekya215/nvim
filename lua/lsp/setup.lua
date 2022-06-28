@@ -1,6 +1,14 @@
 local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 
+require("lsp_signature").setup {
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+  handler_opts = {
+    border = "rounded"
+  },
+  hint_prefix = ""
+}
+
 local opts = { noremap=true, silent=true }
 vim.keymap.set("n", ",e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -20,7 +28,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "H", vim.lsp.buf.hover, bufopts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+  -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set("n", ",wa", vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set("n", ",wr", vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set("n", ",wl", function()
@@ -32,6 +40,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", ",f", vim.lsp.buf.formatting, bufopts)
 
+  require("lsp_signature").on_attach()
 	require("aerial").on_attach(client)
 
 end

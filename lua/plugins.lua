@@ -37,6 +37,10 @@ return require("packer").startup(function(use)
   use "neovim/nvim-lspconfig"
 
   use {
+    "ray-x/lsp_signature.nvim",
+  }
+
+  use {
     "stevearc/aerial.nvim",
     config = function()
       require("config.aerial")
