@@ -125,6 +125,12 @@ return require("packer").startup(function(use)
     end
   }
 
+  use {
+    "sindrets/diffview.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    cmd = { "DiffviewOpen" },
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
