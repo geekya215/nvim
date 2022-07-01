@@ -1,5 +1,4 @@
 require("options")
 require("plugins")
 require("keymappings")
-require("lsp")
 vim.cmd("colorscheme kanagawa")

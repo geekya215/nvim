@@ -2,9 +2,9 @@ local fn = vim.fn
 local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+  print "Installing packer close and reopen Neovim..."
+  vim.cmd [[packadd packer.nvim]]
 end
-
-vim.cmd [[packadd packer.nvim]]
 
 -- Automatically reload neovim whenever plugins.lua is updated 
 vim.cmd([[
@@ -20,64 +20,121 @@ if not status_ok then
   return
 end
 
+-- Have packer use a popup window
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+}
+
 return require("packer").startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
   use "nvim-lua/popup.nvim"
   use "nvim-lua/plenary.nvim"
+  use {
+    "kyazdani42/nvim-web-devicons",
+    opt = false,
+  }
 
-  use "hrsh7th/nvim-cmp" -- Autocompletion plugin
-  use "hrsh7th/cmp-nvim-lsp" -- LSP source for nvim-cmp
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "saadparwaiz1/cmp_luasnip" -- Snippets source for nvim-cmp
-  use "L3MON4D3/LuaSnip" -- Snippets plugin
+  use {
+    "neovim/nvim-lspconfig",
+    opt = true,
+    event = "BufReadPre",
+    config = function()
+      require("lsp.setup")
+    end,
+  }
+
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      {'hrsh7th/cmp-nvim-lsp', after = 'nvim-lspconfig' },
+      {'hrsh7th/cmp-path' , after = 'nvim-cmp'},
+      {'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+      {'saadparwaiz1/cmp_luasnip', after = "LuaSnip" },
+    },
+    event = "InsertEnter",
+    config = function()
+      require("lsp.cmp")
+    end,
+  }
+
+  use {
+    "L3MON4D3/LuaSnip",
+    event = 'InsertCharPre',
+    config = function()
+      require("luasnip")
+    end,
+  }
 
   use {
     "windwp/nvim-autopairs",
+    after = "nvim-cmp",
     config = function()
       require("config.nvim-autopairs")
-    end
+    end,
   }
 
-  use "onsails/lspkind-nvim"
-  use "neovim/nvim-lspconfig"
+  use {
+    "onsails/lspkind-nvim",
+  }
 
   use {
     "ray-x/lsp_signature.nvim",
-  }
-
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    opt = true,
+    after = "nvim-lspconfig",
+    config = function()
+      require("config.lsp_signature")
+    end,
   }
 
   use {
     "stevearc/aerial.nvim",
+    opt = true,
+    after = "nvim-lspconfig",
     config = function()
       require("config.aerial")
     end
   }
 
   use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    opt = true,
+    cmd = {"TroubleToggle"}
+  }
+
+  use {
     "nvim-treesitter/nvim-treesitter",
+    opt = true,
     run = ":TSUpdate",
+    event = "BufRead",
     config = function()
       require("config.treesitter")
     end
   }
 
-  use "nvim-treesitter/nvim-treesitter-textobjects"
-  -- use "nvim-treesitter/nvim-treesitter-refactor"
+  use {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    opt = true,
+    after = "nvim-treesitter",
+  }
 
   use {
     "nvim-telescope/telescope.nvim",
-    requires = "nvim-lua/plenary.nvim"
+    requires = "nvim-lua/plenary.nvim",
+    opt = true,
+    module = "telescope",
+    cmd = { "Telescope" },
   }
 
   use {
     "SmiteshP/nvim-gps",
-    requires = "nvim-treesitter/nvim-treesitter",
+    opt = true,
+    after = "nvim-treesitter",
     config = function()
       require("config.nvim-gps")
     end
@@ -85,7 +142,8 @@ return require("packer").startup(function(use)
 
   use {
     "kyazdani42/nvim-tree.lua",
-    requires = "kyazdani42/nvim-web-devicons",
+    opt = true,
+    cmd = { "NvimTreeToggle" },
     config = function()
       require("config.nvim-tree")
     end
@@ -93,6 +151,8 @@ return require("packer").startup(function(use)
 
   use {
     "lukas-reineke/indent-blankline.nvim",
+    opt = true,
+    event = "BufRead",
     config = function()
       require("config.indent-blankline")
     end
@@ -101,7 +161,7 @@ return require("packer").startup(function(use)
   use {
     "akinsho/bufferline.nvim",
     tag = "v2.*",
-    requires = "kyazdani42/nvim-web-devicons",
+    event = "BufRead",
     config = function()
       require("config.bufferline")
     end
@@ -116,7 +176,8 @@ return require("packer").startup(function(use)
 
   use {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    opt = true,
+    after = "nvim-gps",
     config = function()
       require("config.lualine")
     end
@@ -125,6 +186,8 @@ return require("packer").startup(function(use)
   use {
     "lewis6991/gitsigns.nvim",
     tag = "release", -- To use the latest release
+    opt = true,
+    event = { "BufRead", "BufNewFile" },
     config = function()
       require("config.gitsigns")
     end
@@ -132,15 +195,17 @@ return require("packer").startup(function(use)
 
   use {
     "sindrets/diffview.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    opt = true,
     cmd = { "DiffviewOpen" },
   }
 
   use {
     "akinsho/toggleterm.nvim",
     tag = "v1.*",
+    opt = true,
+    -- event = "BufRead",
     config = function()
-      require("toggleterm").setup()
+      require("config.toggleterm")
     end
   }
 
