@@ -48,6 +48,11 @@ return require("packer").startup(function(use)
   }
 
   use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+  }
+
+  use {
     "stevearc/aerial.nvim",
     config = function()
       require("config.aerial")
