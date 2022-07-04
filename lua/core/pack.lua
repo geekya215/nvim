@@ -1,4 +1,4 @@
-local fn, uv, api = vim.fn,vim.loop,vim.api
+local fn, uv, api = vim.fn, vim.loop, vim.api
 local vim_path = vim.fn.stdpath("config")
 local data_dir = string.format("%s/site/", vim.fn.stdpath("data"))
 local modules_dir = vim_path .. "/lua/modules"
@@ -98,7 +98,7 @@ function plugins.load_compile()
   if vim.fn.filereadable(packer_compiled) == 1 then
     require("packer_compiled")
   else
-    vim.notify("Run PackerSync or PackerCompile","info", { title= "Packer" })
+    vim.notify("Run PackerSync or PackerCompile", "info", { title= "Packer" })
   end
 
   local cmd_func = {

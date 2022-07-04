@@ -87,7 +87,7 @@ end
 local function map(mod)
   return function(tbl)
     vim.validate {
-      tbl = { tbl, "table" }
+      tbl = { tbl, "table" },
     }
 
     if type(tbl[1]) == "table" and type(tbl[2]) == "table" then
