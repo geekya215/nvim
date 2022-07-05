@@ -19,7 +19,7 @@ nmap {
   -- save
   { "<C-s>", cmd("write"), opts(noremap) },
   -- yank
-  { "Y", "y$", opts(noremap) },
+  { "Y", '"+y', opts(noremap) },
   -- buffer jump
   { "]b", cmd("bn"), opts(noremap) },
   { "[b", cmd("bp"), opts(noremap) },
