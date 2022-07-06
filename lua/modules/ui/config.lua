@@ -102,7 +102,7 @@ function config.lualine()
       theme = "auto",
       component_separators = { left = "", right = ""},
       section_separators = { left = "", right = ""},
-      disabled_filetypes = { "DiffviewFiles", "Trouble" },
+      disabled_filetypes = { "DiffviewFiles", "Trouble", "packer" },
       always_divide_middle = true,
       globalstatus = false,
     },
