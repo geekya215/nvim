@@ -3,6 +3,7 @@ local conf = require("modules.enhance.config")
 
 
 plugin {"nvim-treesitter/nvim-treesitter",
+  opt = true,
   event = "BufRead",
   run = ":TSUpdate",
   config = conf.nvim_treesitter,

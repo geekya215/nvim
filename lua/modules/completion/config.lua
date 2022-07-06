@@ -1,6 +1,7 @@
 local config = {}
 
 function config.nvim_lsp_installer()
+  vim.cmd([[packadd nvim-lspconfig]])
   require("nvim-lsp-installer").setup {
   }
 end
@@ -9,7 +10,6 @@ function config.nvim_lsp()
   vim.cmd([[packadd cmp-nvim-lsp]])
   local lspconfig = require("lspconfig")
   local util = require("lspconfig/util")
-  local navic = require("nvim-navic")
 
   -- Mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -43,7 +43,7 @@ function config.nvim_lsp()
     vim.keymap.set("n", ",ca", vim.lsp.buf.code_action, bufopts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", ",f", vim.lsp.buf.formatting, bufopts)
-    navic.attach(client, bufnr)
+    require("nvim-navic").attach(client, bufnr)
   end
 
   -- Add additional capabilities supported by nvim-cmp

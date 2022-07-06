@@ -2,14 +2,18 @@ local plugin = require("core.pack").register_plugin
 local conf = require("modules.completion.config")
 
 plugin {"williamboman/nvim-lsp-installer",
+  opt = false,
   config = conf.nvim_lsp_installer,
 }
 
 plugin {"neovim/nvim-lspconfig",
+  opt = true,
+  event = "BufReadPre",
   config = conf.nvim_lsp,
 }
 
 plugin {"hrsh7th/nvim-cmp",
+  event = "InsertEnter",
   requires = {
     {"hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" },
     {"hrsh7th/cmp-path" , after = "nvim-cmp"},
@@ -32,5 +36,7 @@ plugin {"windwp/nvim-autopairs",
 plugin {"onsails/lspkind-nvim"}
 
 plugin {"ray-x/lsp_signature.nvim",
+  opt = true,
+  after = "nvim-lspconfig",
   config = conf.lsp_signature,
 }
