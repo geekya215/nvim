@@ -2,8 +2,7 @@ local config = {}
 
 function config.nvim_lsp_installer()
   vim.cmd([[packadd nvim-lspconfig]])
-  require("nvim-lsp-installer").setup {
-  }
+  require("nvim-lsp-installer").setup {}
 end
 
 function config.nvim_lsp()
@@ -13,7 +12,7 @@ function config.nvim_lsp()
 
   -- Mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
   vim.keymap.set("n", ",e", vim.diagnostic.open_float, opts)
   vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
   vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
@@ -27,7 +26,7 @@ function config.nvim_lsp()
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
@@ -59,8 +58,8 @@ function config.nvim_lsp()
     on_attach = on_attach,
     capabilities = capabilities,
     lsp_flags = lsp_flags,
-    cmd = {"gopls", "serve"},
-    filetypes = {"go", "gomod"},
+    cmd = { "gopls", "serve" },
+    filetypes = { "go", "gomod" },
     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
     settings = {
       gopls = {
@@ -88,7 +87,7 @@ function config.nvim_lsp()
         procMacro = {
           enable = true,
         },
-      }
+      },
     },
   }
 end
@@ -128,7 +127,7 @@ function config.nvim_cmp()
         require("luasnip").lsp_expand(args.body)
       end,
     },
-    mapping = cmp.mapping.preset.insert({
+    mapping = cmp.mapping.preset.insert {
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
@@ -154,11 +153,11 @@ function config.nvim_cmp()
           fallback()
         end
       end, { "i", "s" }),
-    }),
+    },
 
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
-      { name = "path"},
+      { name = "path" },
       { name = "luasnip" },
     }, {
       { name = "buffer" },
@@ -167,7 +166,7 @@ function config.nvim_cmp()
     formatting = {
       format = function(entry, vim_item)
         -- Kind icons
-        vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+        vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
         -- Source
         vim_item.menu = ({
           buffer = "[Buffer]",
@@ -178,12 +177,12 @@ function config.nvim_cmp()
           latex_symbols = "[LaTeX]",
         })[entry.source.name]
         return vim_item
-      end
+      end,
     },
 
     window = {
       completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered()
+      documentation = cmp.config.window.bordered(),
     },
   }
 end
@@ -198,10 +197,7 @@ function config.nvim_autopairs()
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   local cmp = require("cmp")
 
-  cmp.event:on(
-    "confirm_done",
-    cmp_autopairs.on_confirm_done()
-  )
+  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 function config.lsp_signature()

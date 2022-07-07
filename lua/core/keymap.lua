@@ -2,14 +2,15 @@ local keymap = {}
 local opts = {}
 
 function opts:new(instance)
-  instance = instance or {
-    options = {
-      silent = false,
-      nowait = false,
-      expr = false,
-      noremap = false,
+  instance = instance
+    or {
+      options = {
+        silent = false,
+        nowait = false,
+        expr = false,
+        noremap = false,
+      },
     }
-  }
   setmetatable(instance, self)
   self.__index = self
   return instance
@@ -71,7 +72,7 @@ end
 --@private
 local keymap_set = function(mode, tbl)
   vim.validate {
-    tbl = { tbl, "table" }
+    tbl = { tbl, "table" },
   }
   local len = #tbl
   if len < 2 then

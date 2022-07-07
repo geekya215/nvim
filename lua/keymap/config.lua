@@ -7,7 +7,7 @@ local cmd = keymap.cmd
 -- Use space as leader key
 vim.g.mapleader = " "
 
-  -- leaderkey
+-- leaderkey
 nmap { " ", "", opts(noremap) }
 xmap { " ", "", opts(noremap) }
 
@@ -38,5 +38,5 @@ imap {
   { "<C-e>", "<End>", opts(noremap) },
 }
 
-  -- commandline remap
+-- commandline remap
 cmap { "<C-b>", "<Left>", opts(noremap) }
