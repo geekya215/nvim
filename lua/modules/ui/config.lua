@@ -110,7 +110,11 @@ function config.lualine()
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff" },
       lualine_c = {
-        { navic.get_location, cond = navic.is_available },
+        {
+          navic.get_location,
+          cond = navic.is_available,
+          padding = { left = 1, right = 0 },
+        },
       },
       lualine_x = { "diagnostics", "encoding", "filetype"},
       lualine_y = { "progress" },
@@ -130,7 +134,38 @@ function config.lualine()
 end
 
 function config.nvim_navic()
+  local set_hl = vim.api.nvim_set_hl
+  set_hl(0, "NavicIconsFile",          {default = true, bg = "#2A2A37", fg = "#ffffff"})
+  set_hl(0, "NavicIconsModule",        {default = true, bg = "#2A2A37", fg = "#E46876"})
+  set_hl(0, "NavicIconsNamespace",     {default = true, bg = "#2A2A37", fg = "#E46876"})
+  set_hl(0, "NavicIconsPackage",       {default = true, bg = "#2A2A37", fg = "#E46876"})
+  set_hl(0, "NavicIconsClass",         {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicIconsMethod",        {default = true, bg = "#2A2A37", fg = "#7E9CD8"})
+  set_hl(0, "NavicIconsProperty",      {default = true, bg = "#2A2A37", fg = "#E6C384"})
+  set_hl(0, "NavicIconsField",         {default = true, bg = "#2A2A37", fg = "#E6C384"})
+  set_hl(0, "NavicIconsConstructor",   {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicIconsEnum",          {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicIconsInterface",     {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicIconsFunction",      {default = true, bg = "#2A2A37", fg = "#7E9CD8"})
+  set_hl(0, "NavicIconsVariable",      {default = true, bg = "#2A2A37", fg = "#957FB8"})
+  set_hl(0, "NavicIconsConstant",      {default = true, bg = "#2A2A37", fg = "#FFA066"})
+  set_hl(0, "NavicIconsString",        {default = true, bg = "#2A2A37", fg = "#98BB6C"})
+  set_hl(0, "NavicIconsNumber",        {default = true, bg = "#2A2A37", fg = "#D27E99"})
+  set_hl(0, "NavicIconsBoolean",       {default = true, bg = "#2A2A37", fg = "#FFA066"})
+  set_hl(0, "NavicIconsArray",         {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicIconsObject",        {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicIconsKey",           {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicIconsNull",          {default = true, bg = "#2A2A37", fg = "#957FB8"})
+  set_hl(0, "NavicIconsEnumMember",    {default = true, bg = "#2A2A37", fg = "#957FB8"})
+  set_hl(0, "NavicIconsStruct",        {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicIconsEvent",         {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicIconsOperator",      {default = true, bg = "#2A2A37", fg = "#C0A36E"})
+  set_hl(0, "NavicIconsTypeParameter", {default = true, bg = "#2A2A37", fg = "#7AA89F"})
+  set_hl(0, "NavicText",               {default = true, bg = "#2A2A37", fg = "#C8C093"})
+  set_hl(0, "NavicSeparator",          {default = true, bg = "#2A2A37", fg = "#C8C093"})
+
   require("nvim-navic").setup {
+    highlight = true,
   }
 end
 
