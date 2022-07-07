@@ -24,7 +24,7 @@ plugin {"hrsh7th/nvim-cmp",
 }
 
 plugin {"L3MON4D3/LuaSnip",
-  event = "InsertEnter",
+  event = "InsertCharPre",
   config = conf.lua_snip,
 }
 

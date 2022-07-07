@@ -71,6 +71,26 @@ function config.nvim_lsp()
       },
     },
   }
+
+  lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    lsp_flags = lsp_flags,
+    settings = {
+      ["rust-analyzer"] = {
+        assist = {
+          importGranularity = "module",
+          importPrefix = "self",
+        },
+        cargo = {
+          loadOutDirsFromCheck = true,
+        },
+        procMacro = {
+          enable = true,
+        },
+      }
+    },
+  }
 end
 
 function config.nvim_cmp()
