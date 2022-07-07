@@ -75,6 +75,33 @@ end
 
 function config.nvim_cmp()
   local cmp = require("cmp")
+  local kind_icons = {
+    Text = "",
+    Method = "",
+    Function = "",
+    Constructor = "",
+    Field = "",
+    Variable = "",
+    Class = "ﴯ",
+    Interface = "",
+    Module = "",
+    Property = "ﰠ",
+    Unit = "",
+    Value = "",
+    Enum = "",
+    Keyword = "",
+    Snippet = "",
+    Color = "",
+    File = "",
+    Reference = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "",
+    Event = "",
+    Operator = "",
+    TypeParameter = "",
+  }
   cmp.setup {
     snippet = {
       expand = function(args)
@@ -118,16 +145,20 @@ function config.nvim_cmp()
     }),
 
     formatting = {
-      format = require("lspkind").cmp_format({
-        mode = "symbol_text", -- show only symbol annotations
-        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-        menu = {
+      format = function(entry, vim_item)
+        -- Kind icons
+        vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+        -- Source
+        vim_item.menu = ({
+          buffer = "[Buffer]",
           nvim_lsp = "[LSP]",
+          luasnip = "[LuaSnip]",
           nvim_lua = "[Lua]",
           path = "[Path]",
-          buffer = "[Buffer]",
-        },
-      })
+          latex_symbols = "[LaTeX]",
+        })[entry.source.name]
+        return vim_item
+      end
     },
 
     window = {

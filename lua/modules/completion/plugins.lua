@@ -33,8 +33,6 @@ plugin {"windwp/nvim-autopairs",
   config = conf.nvim_autopairs,
 }
 
-plugin {"onsails/lspkind-nvim"}
-
 plugin {"ray-x/lsp_signature.nvim",
   opt = true,
   after = "nvim-lspconfig",
