@@ -35,6 +35,11 @@ function Packer:load_packer()
     compile_path = packer_compiled,
     git = { clone_timeout = 120 },
     disable_commands = true,
+    display = {
+      open_fn = function()
+        return require("packer.util").float { border = "rounded" }
+      end,
+    },
   }
   packer.reset()
   local use = packer.use
@@ -65,7 +70,7 @@ local plugins = setmetatable({}, {
       Packer:load_packer()
     end
     return packer[key]
-  end
+  end,
 })
 
 function plugins.ensure_plugins()
@@ -98,7 +103,7 @@ function plugins.load_compile()
   if vim.fn.filereadable(packer_compiled) == 1 then
     require("packer_compiled")
   else
-    vim.notify("Run PackerSync or PackerCompile", "info", { title= "Packer" })
+    vim.notify("Run PackerSync or PackerCompile", "info", { title = "Packer" })
   end
 
   local cmd_func = {

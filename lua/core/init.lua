@@ -1,6 +1,7 @@
 local vim = vim
 
---disable_distribution_plugins
+-- disable_distribution_plugins
+-- stylua: ignore start
 vim.g.loaded_gzip              = 1
 vim.g.loaded_tar               = 1
 vim.g.loaded_tarPlugin         = 1
@@ -21,6 +22,7 @@ vim.g.loaded_netrwSettings     = 1
 vim.g.loaded_netrwFileHandlers = 1
 vim.g.did_load_filetypes = 0
 vim.g.do_filetype_lua = 1
+-- stylua: ignore end
 
 local pack = require("core.pack")
 

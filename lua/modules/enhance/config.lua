@@ -7,7 +7,7 @@ function config.nvim_treesitter()
   require("nvim-treesitter.install").prefer_git = true
   require("nvim-treesitter.configs").setup {
     -- A list of parser names, or "all"
-    ensure_installed = { "go", "rust", "javascript", "typescript", "tsx" },
+    ensure_installed = { "go", "rust" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,

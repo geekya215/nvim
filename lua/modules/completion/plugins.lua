@@ -15,16 +15,16 @@ plugin {"neovim/nvim-lspconfig",
 plugin {"hrsh7th/nvim-cmp",
   event = "InsertEnter",
   requires = {
-    {"hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" },
-    {"hrsh7th/cmp-path" , after = "nvim-cmp"},
-    {"hrsh7th/cmp-buffer", after = "nvim-cmp" },
-    {"saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
+    { "hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" },
+    { "hrsh7th/cmp-path" , after = "nvim-cmp" },
+    { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+    { "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
   },
   config = conf.nvim_cmp,
 }
 
 plugin {"L3MON4D3/LuaSnip",
-  event = "InsertEnter",
+  event = "InsertCharPre",
   config = conf.lua_snip,
 }
 
@@ -32,8 +32,6 @@ plugin {"windwp/nvim-autopairs",
   after = "nvim-cmp",
   config = conf.nvim_autopairs,
 }
-
-plugin {"onsails/lspkind-nvim"}
 
 plugin {"ray-x/lsp_signature.nvim",
   opt = true,
