@@ -36,6 +36,10 @@ nmap {
   -- bufferline
   { "<leader>j", cmd("BufferLineCyclePrev"), opts(noremap, silent) },
   { "<leader>k", cmd("BufferLineCycleNext"), opts(noremap, silent) },
+  { "<leader>q", cmd("bp<bar>bd!#<CR>"), opts(noremap, silent) },
+
+  -- telescope
+  { "<leader>ff", cmd("Telescope find_files"), opts(noremap, silent) },
 
   { "<leader>g", cmd("lua _lazygit_toggle()<cr>"), opts(noremap, silent) },
 }
