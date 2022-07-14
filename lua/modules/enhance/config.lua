@@ -102,4 +102,9 @@ function config.nvim_treesitter()
   }
 end
 
+function config.comment()
+  require('Comment').setup {
+  }
+end
+
 return config

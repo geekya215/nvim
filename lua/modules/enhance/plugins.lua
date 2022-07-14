@@ -12,3 +12,7 @@ plugin {"nvim-treesitter/nvim-treesitter",
 plugin {"nvim-treesitter/nvim-treesitter-textobjects",
   after = "nvim-treesitter",
 }
+
+plugin{'numToStr/Comment.nvim',
+  config = conf.comment,
+}
