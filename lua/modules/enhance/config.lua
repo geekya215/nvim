@@ -107,4 +107,9 @@ function config.comment()
   }
 end
 
+function config.nvim_surround()
+  require("nvim-surround").setup {
+  }
+end
+
 return config
