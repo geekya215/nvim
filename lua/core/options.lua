@@ -4,6 +4,7 @@ vim.opt.mouse          = "nv"
 vim.opt.hidden         = true
 vim.opt.virtualedit    = "block"
 vim.opt.encoding       = "utf-8"
+vim.opt.clipboard      = "unnamedplus"
 vim.opt.wildignorecase = true
 vim.opt.backup         = false
 vim.opt.writebackup    = false

@@ -40,6 +40,7 @@ nmap {
 
   -- telescope
   { "<leader>ff", cmd("Telescope find_files"), opts(noremap, silent) },
+  { "<leader>fa", cmd("Telescope live_grep"), opts(noremap, silent) },
 
   { "<leader>g", cmd("lua _lazygit_toggle()<cr>"), opts(noremap, silent) },
 }
