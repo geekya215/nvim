@@ -1,46 +1,48 @@
-require("keymap.config")
-local key = require("core.keymap")
-local nmap = key.nmap
-local silent, noremap = key.silent, key.noremap
-local opts = key.new_opts
-local cmd = key.cmd
+local keymap = require("core.keymap")
+local nmap, imap, cmap, xmap = keymap.nmap, keymap.imap, keymap.cmap, keymap.xmap
+local silent, noremap = keymap.silent, keymap.noremap
+local opts = keymap.new_opts
+local cmd = keymap.cmd
 
-function _G.set_terminal_keymaps()
-  local opts = { noremap = true }
-  vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
-end
+-- Use space as leader key
+vim.g.mapleader = " "
 
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd("autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()")
+-- leaderkey
+nmap { " ", "", opts(noremap) }
+xmap { " ", "", opts(noremap) }
 
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new { cmd = "lazygit", hidden = true, direction = "float" }
-
-function _lazygit_toggle()
-  lazygit:toggle()
-end
-
+-- usage example
 nmap {
-  -- packer
-  { "<leader>pu", cmd("PackerUpdate"), opts(noremap, silent) },
-  { "<leader>pi", cmd("PackerInstall"), opts(noremap, silent) },
-  { "<leader>pc", cmd("PackerCompile"), opts(noremap, silent) },
+  -- noremal remap
+  -- close buffer
+  { "<C-x>k", cmd("bdelete"), opts(noremap, silent) },
+  -- save
+  { "<C-s>", cmd("write"), opts(noremap) },
+  -- yank
+  { "Y", "y$", opts(noremap) },
+  -- buffer jump
+  { "]b", cmd("bn"), opts(noremap) },
+  { "[b", cmd("bp"), opts(noremap) },
+  -- remove trailing white space
+  { "<Leader>t", cmd("TrimTrailingWhitespace"), opts(noremap) },
+  -- window jump
+  { "<C-h>", "<C-w>h", opts(noremap) },
+  { "<C-l>", "<C-w>l", opts(noremap) },
+  { "<C-j>", "<C-w>j", opts(noremap) },
+  { "<C-k>", "<C-w>k", opts(noremap) },
+}
 
-  -- nvimtree
-  { "<leader>e", cmd("NvimTreeToggle"), opts(noremap, silent) },
+imap {
+  -- insert mode
+  { "<C-h>", "<Bs>", opts(noremap) },
+  { "<C-e>", "<End>", opts(noremap) },
+}
 
-  -- bufferline
-  { "<leader>j", cmd("BufferLineCyclePrev"), opts(noremap, silent) },
-  { "<leader>k", cmd("BufferLineCycleNext"), opts(noremap, silent) },
-  { "<leader>q", cmd("bp<bar>bd!#<CR>"), opts(noremap, silent) },
-
-  -- telescope
-  { "<leader>ff", cmd("Telescope find_files"), opts(noremap, silent) },
-  { "<leader>fa", cmd("Telescope live_grep"), opts(noremap, silent) },
-
-  { "<leader>g", cmd("lua _lazygit_toggle()<cr>"), opts(noremap, silent) },
+-- commandline remap
+cmap { "<C-b>", "<Left>", opts(noremap) }
+-- usage of plugins
+nmap {
+  -- plugin manager: Lazy.nvim
+  { "<Leader>pu", cmd("Lazy update"), opts(noremap, silent) },
+  { "<Leader>pi", cmd("Lazy install"), opts(noremap, silent) },
 }
