@@ -1,32 +1,26 @@
-local vim = vim
+local g, fn = vim.g, vim.fn
+local helper = require("core.helper")
 
--- disable_distribution_plugins
--- stylua: ignore start
-vim.g.loaded_gzip              = 1
-vim.g.loaded_tar               = 1
-vim.g.loaded_tarPlugin         = 1
-vim.g.loaded_zip               = 1
-vim.g.loaded_zipPlugin         = 1
-vim.g.loaded_getscript         = 1
-vim.g.loaded_getscriptPlugin   = 1
-vim.g.loaded_vimball           = 1
-vim.g.loaded_vimballPlugin     = 1
-vim.g.loaded_matchit           = 1
-vim.g.loaded_matchparen        = 1
-vim.g.loaded_2html_plugin      = 1
-vim.g.loaded_logiPat           = 1
-vim.g.loaded_rrhelper          = 1
-vim.g.loaded_netrw             = 1
-vim.g.loaded_netrwPlugin       = 1
-vim.g.loaded_netrwSettings     = 1
-vim.g.loaded_netrwFileHandlers = 1
-vim.g.did_load_filetypes = 0
-vim.g.do_filetype_lua = 1
--- stylua: ignore end
+--disable_distribution_plugins
+g.loaded_gzip = 1
+g.loaded_tar = 1
+g.loaded_tarPlugin = 1
+g.loaded_zip = 1
+g.loaded_zipPlugin = 1
+g.loaded_getscript = 1
+g.loaded_getscriptPlugin = 1
+g.loaded_vimball = 1
+g.loaded_vimballPlugin = 1
+g.loaded_matchit = 1
+g.loaded_matchparen = 1
+g.loaded_2html_plugin = 1
+g.loaded_logiPat = 1
+g.loaded_rrhelper = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+g.loaded_netrwSettings = 1
+g.loaded_netrwFileHandlers = 1
 
-local pack = require("core.pack")
-
-pack.ensure_plugins()
+require("core.pack"):boot_strap()
 require("core.options")
-pack.load_compile()
 require("keymap")
