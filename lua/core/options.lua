@@ -8,12 +8,6 @@ opt.virtualedit = "block"
 opt.clipboard = "unnamedplus"
 opt.wildignorecase = true
 opt.swapfile = false
-opt.directory = cache_dir .. "swap/"
-opt.undodir = cache_dir .. "undo/"
-opt.backupdir = cache_dir .. "backup/"
-opt.viewdir = cache_dir .. "view/"
-opt.spellfile = cache_dir .. "spell/en.uft-8.add"
-opt.history = 2000
 opt.timeout = true
 opt.ttimeout = true
 opt.timeoutlen = 500
@@ -46,7 +40,7 @@ opt.list = true
 opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
 opt.pumblend = 10
 opt.winblend = 10
-opt.undofile = true
+opt.undofile = false
 
 opt.smarttab = true
 opt.expandtab = true
@@ -64,6 +58,8 @@ opt.foldlevelstart = 99
 opt.foldmethod = "marker"
 
 opt.number = true
+opt.relativenumber = true
+opt.cursorline = true
 opt.signcolumn = "yes"
 opt.spelloptions = "camel"
 
