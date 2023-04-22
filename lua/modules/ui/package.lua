@@ -13,12 +13,6 @@ package {
 }
 
 package {
-  "SmiteshP/nvim-navic",
-  dependencies = "neovim/nvim-lspconfig",
-  config = conf.navic,
-}
-
-package {
   "lukas-reineke/indent-blankline.nvim",
   event = "BufRead",
   config = conf.indent_blankline,

@@ -43,7 +43,6 @@ function config.catppuccin()
 end
 
 function config.lualine()
-  local navic = require("nvim-navic")
   require("lualine").setup {
     options = {
       icons_enabled = true,
@@ -57,16 +56,6 @@ function config.lualine()
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff" },
-      lualine_c = {
-        {
-          function()
-            return navic.get_location()
-          end,
-          cond = function()
-            return navic.is_available()
-          end,
-        },
-      },
       lualine_x = { "diagnostics", "encoding", "filetype" },
       lualine_y = { "filename" },
       lualine_z = { "progress", "location" },
@@ -81,12 +70,6 @@ function config.lualine()
     },
     tabline = {},
     extensions = {},
-  }
-end
-
-function config.nvim_navic()
-  require("nvim-navic").setup {
-    highlight = true,
   }
 end
 

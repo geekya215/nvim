@@ -4,7 +4,8 @@ local conf = require("modules.tool.config")
 package {
   "lewis6991/gitsigns.nvim",
   tag = "release",
-  config = conf.gitsigns
+  event = { 'BufRead', 'BufNewFile' },
+  config = conf.gitsigns,
 }
 
 package {

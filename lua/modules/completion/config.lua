@@ -11,13 +11,11 @@ function config.nvim_lspconfig()
   -- Add additional capabilities supported by nvim-cmp
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-  local navic = require("nvim-navic")
-
   lspconfig.gopls.setup {
     cmd = { "gopls" },
-    on_attach = function(client, bufnr)
-      navic.attach(client, bufnr)
-    end,
+    -- on_attach = function(client, bufnr)
+    --   navic.attach(client, bufnr)
+    -- end,
     capabilities = capabilities,
     settings = {
       gopls = {
@@ -31,6 +29,14 @@ function config.nvim_lspconfig()
     },
     init_options = {
       usePlaceholders = true,
+    },
+  }
+
+  lspconfig.rust_analyzer.setup {
+    capabilities = capabilities,
+    -- Server-specific settings...
+    settings = {
+      ['rust-analyzer'] = {},
     },
   }
 
